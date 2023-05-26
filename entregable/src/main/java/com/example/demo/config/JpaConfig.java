@@ -51,6 +51,7 @@ public class JpaConfig {
 		em.setDataSource(dataSource());
 		em.setPackagesToScan(new String[] { "com.example.demo.entidades" });
 
+		
 		JpaVendorAdapter vendorAdapter = new HibernateJpaVendorAdapter();
 		em.setJpaVendorAdapter(vendorAdapter);
 		em.setJpaProperties(additionalProperties());
