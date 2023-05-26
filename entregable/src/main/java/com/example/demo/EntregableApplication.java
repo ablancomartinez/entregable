@@ -8,7 +8,7 @@ public class EntregableApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(EntregableApplication.class, args);
-		
+		System.out.println("hola");
 	}
 
 }
