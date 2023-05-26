@@ -35,11 +35,12 @@ public class JpaConfig {
 	@Bean
 	public DataSource dataSource() {
 		final DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
-		// dataSource.setUrl(env.getProperty("spring.datasource.url"));
-		dataSource.setUrl(url);
-		// dataSource.setUsername(env.getProperty("spring.datasource.username"));
-		dataSource.setUsername(username);
+		//dataSource.setDriverClassName(env.getProperty("spring.datasource.driver-class-name"));
+		dataSource.setDriverClassName("org.postgresql.Driver");
+		 dataSource.setUrl(env.getProperty("spring.datasource.url"));
+		//dataSource.setUrl(url);
+		 dataSource.setUsername(env.getProperty("spring.datasource.username"));
+		//dataSource.setUsername(username);
 		dataSource.setPassword(env.getProperty("spring.datasource.password"));
 		return dataSource;
 	}

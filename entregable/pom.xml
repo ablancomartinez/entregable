@@ -29,7 +29,7 @@
 		<!-- Logging -->
 		<logback.version>1.0.13</logback.version>
 		<slf4j.version>1.7.5</slf4j.version>
-	<java.version>11</java.version>
+		<java.version>11</java.version>
 	</properties>
 
 	<dependencies>
@@ -59,9 +59,10 @@
 		</dependency>
 		<dependency>
 			<groupId>org.postgresql</groupId>
-			<artifactId>postgresql</artifactId>			
+			<artifactId>postgresql</artifactId>
+			<version>42.6.0</version>
 		</dependency>
-		
+
 		<dependency>
 			<groupId>org.springframework</groupId>
 			<artifactId>spring-core</artifactId>
