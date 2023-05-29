@@ -1,17 +1,25 @@
 package com.example.demo.repository.jpa;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.persistence.SynchronizationType;
 
 import org.springframework.stereotype.Repository;
 
 import com.example.demo.entidades.Universo;
 import com.example.demo.repository.UniversoRepository;
 
+import jakarta.persistence.EntityManagerFactory;
+import jakarta.persistence.Persistence;
+import jakarta.persistence.PersistenceContextType;
+
 @Repository
 public class JpaUniversoRepository implements UniversoRepository {
-	@PersistenceContext
+		
+	@PersistenceContext(type = PersistenceContextType.EXTENDED)
+
 	private EntityManager em;
+	 
 
 	public JpaUniversoRepository() {
 
@@ -19,7 +27,8 @@ public class JpaUniversoRepository implements UniversoRepository {
 
 	@Override
 	public Universo findById(Integer id) {
-		// TODO Auto-generated method stub
+		
+		//em.getEntityManagerFactory().createEntityManager();
 		return em.find(Universo.class, id);
 	}
 
