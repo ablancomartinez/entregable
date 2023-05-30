@@ -1,7 +1,7 @@
 package com.example.demo.entidades;
 
 
-import java.io.Serializable;
+
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -19,6 +19,7 @@ public class Universo  {
 	@Column(name = "id_universo")
 	private Integer id;
 	
+	//descripcion
 	@Column (name="descripcion")
 	private String descripcion;
 	

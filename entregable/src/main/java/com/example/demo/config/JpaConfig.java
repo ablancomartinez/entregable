@@ -31,10 +31,10 @@ public class JpaConfig {
 	@Autowired
 	private Environment env;
 	
-	@Value("spring.datasource.url")
+	
 	private String url;
 	
-	@Value("spring.datasource.username")
+	
 	private String username;
 	
 
