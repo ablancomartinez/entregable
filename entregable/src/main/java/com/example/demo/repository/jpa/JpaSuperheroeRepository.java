@@ -1,6 +1,8 @@
-package com.example.demo.repository.jpa;
+ package com.example.demo.repository.jpa;
 
-import javax.xml.transform.Result;
+import java.util.List;
+
+
 
 import org.springframework.stereotype.Repository;
 
@@ -29,6 +31,16 @@ public class JpaSuperheroeRepository implements SuperheroeRepository {
 		return em.createQuery("FROM Superheroe where nombre = :nombre",
 				Superheroe.class).setParameter("nombre", nombre).getSingleResult();
 	}
-	 
-	
+	 @Override
+	public List<Superheroe> findByContiene(String nombre) {
+		// TODO Auto-generated method stub
+		 nombre = "%" + nombre + "%";
+		return em.createQuery("FROM Superheroe where nombre like (:nombre)",
+				Superheroe.class).setParameter("nombre", nombre).getResultList();
+	}
+	@Override
+	public Superheroe findById(Integer id) {
+		// TODO Auto-generated method stub
+		return em.find(Superheroe.class, id);
+	}
 }

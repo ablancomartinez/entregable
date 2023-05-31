@@ -1,5 +1,7 @@
 package com.example.demo.controller;
 
+import java.util.List;
+
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -22,4 +24,13 @@ public class SuperheroeController {
 		return superheroeService.buscarSuperHeroe(nombre);
 	}
 	
+	@GetMapping(value = "/superheroe/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+	public Superheroe obtenerSuperheroeId(@PathVariable(value = "id") Integer id)
+	{
+		return superheroeService.BuscarSuperheroeID(id);
+	}
+	@GetMapping(value = "/superheroe/nombres/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
+	public List<Superheroe> obtenerSuperheroeLista(@PathVariable(value = "nombre") String nombre) {
+		return superheroeService.buscarSuperheroeContiene(nombre);
+	}
 }

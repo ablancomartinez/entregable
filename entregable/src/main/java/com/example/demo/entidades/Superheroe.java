@@ -23,7 +23,7 @@ public class Superheroe {
 	// nombre
 	@Column(name = "nombre")
 	private String nombre;
-	// estado (vivo o muerto)
+	// estado (vivo o muerto) se controlara en los metodos
 	@Column(name = "estado")
 	private String estado;
 	// Id_universo restriccion de existencia

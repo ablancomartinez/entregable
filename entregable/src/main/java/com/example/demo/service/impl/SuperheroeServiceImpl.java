@@ -1,5 +1,7 @@
 package com.example.demo.service.impl;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
 import com.example.demo.entidades.Superheroe;
@@ -21,6 +23,15 @@ public class SuperheroeServiceImpl implements SuperheroeService{
 		// TODO Auto-generated method stub
 		return superheroeRepository.findByNombre(nombre);
 	}
+	@Override
+	public List<Superheroe> buscarSuperheroeContiene(String nombre) {
+		// TODO Auto-generated method stub
+		return superheroeRepository.findByContiene(nombre);
+	}
 	
-	
+	@Override
+	public Superheroe BuscarSuperheroeID(Integer id) {
+		// TODO Auto-generated method stub
+		return superheroeRepository.findById(id);
+	}
 }
