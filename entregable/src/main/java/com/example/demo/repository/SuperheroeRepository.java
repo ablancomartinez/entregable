@@ -12,4 +12,6 @@ public interface SuperheroeRepository {
 	Superheroe findById (Integer id);
 	
 	List<Superheroe> findByContiene	(String nombre);
+	
+	Superheroe modificarEstado (Superheroe superheroe);
 }

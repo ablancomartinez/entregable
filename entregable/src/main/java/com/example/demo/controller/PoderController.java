@@ -2,6 +2,7 @@ package com.example.demo.controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -10,6 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import com.example.demo.dto.PoderDTO;
 import com.example.demo.entidades.Poder;
+import com.example.demo.entidades.Superheroe;
 import com.example.demo.service.PoderService;
 
 @RestController
@@ -34,6 +36,8 @@ public class PoderController {
 		return response;
 	}
 	private PoderDTO convertPoderToDTO (Poder poder) {
+		
 		return new PoderDTO(poder.getNombre());
+		
 	}
 }

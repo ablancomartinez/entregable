@@ -8,6 +8,8 @@ import com.example.demo.entidades.Superheroe;
 import com.example.demo.repository.SuperheroeRepository;
 import com.example.demo.service.SuperheroeService;
 
+import jakarta.transaction.Transactional;
+
 @Service
 public class SuperheroeServiceImpl implements SuperheroeService{
 
@@ -34,4 +36,12 @@ public class SuperheroeServiceImpl implements SuperheroeService{
 		// TODO Auto-generated method stub
 		return superheroeRepository.findById(id);
 	}
+
+	@Override
+	@Transactional
+	public void modificarEstadoSuperheroe(Superheroe superheroe) {
+		// TODO Auto-generated method stub
+		 superheroeRepository.modificarEstado(superheroe);
+	}
+	
 }

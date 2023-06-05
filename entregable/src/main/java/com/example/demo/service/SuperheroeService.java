@@ -11,4 +11,6 @@ public interface SuperheroeService {
 	Superheroe BuscarSuperheroeID (Integer id);
 	
 	List<Superheroe> buscarSuperheroeContiene (String nombre);
+	
+	void modificarEstadoSuperheroe (Superheroe superheroe);
 }

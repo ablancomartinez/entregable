@@ -43,4 +43,12 @@ public class JpaSuperheroeRepository implements SuperheroeRepository {
 		// TODO Auto-generated method stub
 		return em.find(Superheroe.class, id);
 	}
+
+	@Override
+	public Superheroe modificarEstado(Superheroe superheroe) {
+		// TODO Auto-generated method stub
+		em.merge(superheroe);
+		return superheroe;
+	}
+	
 }

@@ -25,8 +25,10 @@ public class JpaPoderRepository implements PoderRepository{
 	}
 
 	@Override
+	@SuppressWarnings("unchecked")
 	public List<Poder> listarPoderes() {
 		// TODO Auto-generated method stub
+		
 		List <Poder> resultList = em.createQuery("FROM Poder").getResultList();
 		return  resultList;
 	}
