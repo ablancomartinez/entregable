@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.springframework.http.MediaType;
@@ -10,6 +11,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+
+import com.example.demo.dto.SuperheroeDTO;
 import com.example.demo.entidades.Superheroe;
 import com.example.demo.exception.ResourceNotFoundException;
 import com.example.demo.service.SuperheroeService;
@@ -25,20 +28,37 @@ public class SuperheroeController {
 		this.superheroeService = superheroeService;
 	}
 	@GetMapping(value = "/superheroe/nombre/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public Superheroe obtenerSuperheroe(@PathVariable(value = "nombre") String nombre) {
-		return superheroeService.buscarSuperHeroe(nombre);
+	public SuperheroeDTO obtenerSuperheroe(@PathVariable(value = "nombre") String nombre) throws ResourceNotFoundException {
+		Superheroe superDB =  superheroeService.buscarSuperHeroe(nombre);
+		SuperheroeDTO response = convertSuperheroeToDTO(superDB); 
+		return response ;
 	}
 	
 	
+//	@GetMapping(value = "/superheroe/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
+//	public Superheroe obtenerSuperheroeId(@PathVariable(value = "id") Integer id)
+//	{
+//		return superheroeService.BuscarSuperheroeID(id);
+//	}
 	@GetMapping(value = "/superheroe/{id}",produces = MediaType.APPLICATION_JSON_VALUE)
-	public Superheroe obtenerSuperheroeId(@PathVariable(value = "id") Integer id)
+	public SuperheroeDTO obtenerSuperheroeId(@PathVariable(value = "id") Integer id)
 	{
-		return superheroeService.BuscarSuperheroeID(id);
+		
+	Superheroe superDB =  superheroeService.BuscarSuperheroeID(id);
+	SuperheroeDTO response = convertSuperheroeToDTO(superDB); 
+
+	
+	 return response;
 	}
+	
+	
 	
 	@GetMapping(value = "/superheroe/nombres/{nombre}", produces = MediaType.APPLICATION_JSON_VALUE)
-	public List<Superheroe> obtenerSuperheroeLista(@PathVariable(value = "nombre") String nombre) {
-		return superheroeService.buscarSuperheroeContiene(nombre);
+	public List<SuperheroeDTO> obtenerSuperheroeLista(@PathVariable(value = "nombre") String nombre) {
+		List<SuperheroeDTO> response = new ArrayList<>(); 
+		List<Superheroe> superheroeDB = superheroeService.buscarSuperheroeContiene(nombre);
+		superheroeDB.forEach(superheroe -> response.add(convertSuperheroeToDTO(superheroe)));
+		return response ;
 	}
 	
 	//metodos matar y revivir
@@ -61,12 +81,21 @@ public class SuperheroeController {
 					
 				}
 		else {
-			 new ResourceNotFoundException("Employee not exist with id: " + nombre);
+			 throw new ResourceNotFoundException("No existe un Superheroe cuyo nombre sea  : " + nombre);
 		}
 				
 		
 		
 		return ResponseEntity.ok(modificarEstado);
 	}
+private SuperheroeDTO convertSuperheroeToDTO (Superheroe superheroe) {
+		
+		return new SuperheroeDTO(superheroe.getNombre(),
+				superheroe.getEstado(),
+				superheroe.getUniverso(),
+				superheroe.getPoderes());
+		
+	}
+	
 
 }
