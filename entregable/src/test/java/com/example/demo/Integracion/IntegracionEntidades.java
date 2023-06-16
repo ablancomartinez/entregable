@@ -13,7 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
 import com.example.demo.EntregableApplication;
-import com.example.demo.entidades.Superheroe;
+
 
 @SpringBootTest(classes = EntregableApplication.class, webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 
